@@ -4,6 +4,9 @@ import Menu from './Menu.js';
 import Display from './Display.js';
 
 class App extends React.Component {
+  state = {
+    students: []
+  }
 
   componentDidMount() {
     this.getStudents();
@@ -12,11 +15,9 @@ class App extends React.Component {
   getStudents = () => {
     axios.get('http://localhost:3000/students')
       .then((response) => {
-        console.log(response);
+        console.log(response.data)
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => console.log(error));
   }
 
   render() {
