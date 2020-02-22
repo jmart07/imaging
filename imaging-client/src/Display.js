@@ -1,53 +1,45 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Stage, Layer, Star } from 'react-konva';
 
-class Display extends React.Component {
-  state = {
-    stageWidth: 0,
-    stageHeight: 0
-  }
+const Display = () => {
+  const [stageDimensions, setStageDimensions] = useState([
+    { width: window.clientWidth * .75 },
+    { height: window.clientHeight }
+  ]);
 
-  componentDidMount() {
-    console.log('stage mounted');
-    this.fitStageToContainer();
-  }
+  useEffect(() => {
+    console.log('useEffect run');
+    const handleResize = () => {
+      setStageDimensions({
+        width: window.clientWidth * .75,
+        height: window.clientHeight
+      }); 
 
-  fitStageToContainer() {
-    const container = document.querySelector('.container');
-    console.log(container);
-    const containerWidth = container.clientWidth;
-    const containerHeight = container.clientHeight;
+      window.addEventListener('resize', handleResize);
+    }
 
-    console.log(containerWidth);
-    console.log(containerHeight)
+    return () => window.removeEventListener('resize', handleResize);
 
-    this.setState({
-      stageWidth: containerWidth * .75,
-      stageHeight: containerHeight
-    });
-  }
+  });
 
-  render() {
-    console.log('rendering display');
-    return(
-      <Stage className='stage'
-        width={this.state.stageWidth}
-        height={this.state.stageHeight}
-      >
-        <Layer>
-          <Star
-            x={100}
-            y={100}
-            numPoints={10}
-            innerRadius={50}
-            outerRadius={60}
-            fill="#89b717"
-            draggable
-          />
-        </Layer>
-      </Stage>
-    )
-  }
+  return(
+    <Stage className='stage'
+      width={stageDimensions.width}
+      height={stageDimensions.height}
+    >
+      <Layer>
+        <Star
+          x={100}
+          y={100}
+          numPoints={10}
+          innerRadius={50}
+          outerRadius={60}
+          fill="#89b717"
+          draggable
+        />
+      </Layer>
+    </Stage>
+  )
 }
 
 export default Display;
