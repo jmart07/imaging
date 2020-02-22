@@ -3,6 +3,9 @@ import axios from 'axios';
 import Menu from './Menu.js';
 import Display from './Display.js';
 
+import './app.css';
+
+
 class App extends React.Component {
   state = {
     students: []
@@ -22,7 +25,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='container'>
         <Menu />
         <Display />
       </div>

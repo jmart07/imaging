@@ -1,0 +1,27 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  border: solid black 1px;
+}
+
+.container {
+  display: flex;
+  margin: 10px;
+  min-height: 400px;
+  background-color: gray;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  background-color: lightgray;
+}
+
+.stage {
+  background-color: lightblue;
+}
+
+.layer {
+  background-color: lightgoldenrodyellow;
+}
