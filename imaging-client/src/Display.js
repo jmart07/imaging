@@ -2,30 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Stage, Layer, Star } from 'react-konva';
 
 const Display = () => {
-  const [stageDimensions, setStageDimensions] = useState([
-    { width: window.clientWidth * .75 },
-    { height: window.clientHeight }
-  ]);
+  const [stageWidth, setStageWidth] = useState(window.innerWidth * .75);
+  const [stageHeight, setStageHeight] = useState(window.innerHeight);
 
   useEffect(() => {
-    console.log('useEffect run');
     const handleResize = () => {
-      setStageDimensions({
-        width: window.clientWidth * .75,
-        height: window.clientHeight
-      }); 
-
-      window.addEventListener('resize', handleResize);
+      setStageWidth(window.innerWidth * .75);
+      setStageHeight(window.innerHeight);
     }
 
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener('resize', handleResize);
 
+    return () => window.removeEventListener('resize', handleResize);
   });
 
   return(
     <Stage className='stage'
-      width={stageDimensions.width}
-      height={stageDimensions.height}
+      width={stageWidth}
+      height={stageHeight}
     >
       <Layer>
         <Star
