@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Stage, Layer, Star } from 'react-konva';
+import { Stage, Layer } from 'react-konva';
+import Card from './Card';
 
 const Display = () => {
   const [stageWidth, setStageWidth] = useState(window.innerWidth * .75);
@@ -22,15 +23,7 @@ const Display = () => {
       height={stageHeight}
     >
       <Layer>
-        <Star
-          x={100}
-          y={100}
-          numPoints={10}
-          innerRadius={50}
-          outerRadius={60}
-          fill="#89b717"
-          draggable
-        />
+        <Card />
       </Layer>
     </Stage>
   )

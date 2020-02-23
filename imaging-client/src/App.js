@@ -1,36 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Menu from './Menu.js';
 import Display from './Display.js';
+import Filter from './Filter.js';
 
 import './app.css';
 
 
-class App extends React.Component {
-  state = {
-    students: []
-  }
+const App = () => {
+  const [students, setStudents] = useState([]);
 
-  componentDidMount() {
-    this.getStudents();
-  }
-
-  getStudents = () => {
+  useEffect(() => {
     axios.get('http://localhost:3000/students')
       .then((response) => {
-        console.log(response.data)
+        setStudents(response);
       })
       .catch((error) => console.log(error));
-  }
+  });
 
-  render() {
-    return (
-      <div className='container'>
+  return (
+    <div className='container'>
+      <div className='left'>
+        <div className='logo'>LOGO</div>
         <Menu />
+      </div>
+      <div className='right'>
+        <Filter />
         <Display />
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default App;

@@ -1,24 +1,28 @@
 * {
   margin: 0px;
   padding: 0px;
-  border: solid black 1px;
+  /* border: solid black 1px; */
 }
 
 .container {
   display: flex;
   margin: 10px;
-  min-height: 200px;
+  padding: 5px;
+  min-height: 400px;
   background-color: gray;
+}
+.left {
+  width: 25%;
 }
 
 .menu {
   display: flex;
   flex-direction: column;
-  width: 25%;
   background-color: lightgray;
 }
 
 .stage {
+  padding: 5px;
   background-color: lightblue;
 }
 
