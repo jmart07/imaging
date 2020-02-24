@@ -1,5 +1,6 @@
 import React from 'react';
 import { Rect, Image } from 'react-konva';
+// import Portrait from './Portrait';
 
 const Card = () => {
   const cardWidth = 2 * (3.375 * 96);
@@ -8,7 +9,7 @@ const Card = () => {
 
   return (
     <>
-      <Rect
+      {/* <Rect
         x={30}
         y={30}
         width={cardWidth}
@@ -16,9 +17,16 @@ const Card = () => {
         fill="ivory"
         cornerRadius={cornerRadius}
         shadowBlur={10}
-      />
+      /> */}
       <Image
-
+        image='/images/gnome_tile.png'
+        x={10}
+        y={10}
+        width={50}
+        height={50}
+    
+    
+    
       />
     </>
   );
