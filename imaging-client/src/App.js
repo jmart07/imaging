@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import StudentContextProvider from './StudentContext'
 import Menu from './Menu';
 import Display from './Display';
@@ -6,24 +7,40 @@ import Filter from './Filter';
 
 import './app.css';
 
+class App extends Component {
+  state = {
+    students: []
+  }
 
-const App = () => {
+  componentDidMount() {
+    console.log('app component did mount');
+    this.getStudents();
+  }
 
+  getStudents = () => {
+    axios.get('http://localhost:3000/students')
+    .then((response) => {
+      this.setState({ students: response.data })
+    })
+    .catch((error) => console.log(error));
+  }
 
-  return (
-    <StudentContextProvider>
-      <div className='container'>
-        <div className='left'>
-          <div className='logo'>LOGO</div>
-          <Menu />
+  render() {
+    return (
+      <StudentContextProvider>
+        <div className='container'>
+          <div className='left'>
+            <div className='logo'>LOGO</div>
+            <Menu />
+          </div>
+          <div className='right'>
+            <Filter />
+            <Display />
+          </div>
         </div>
-        <div className='right'>
-          <Filter />
-          <Display />
-        </div>
-      </div>
-    </StudentContextProvider>
-  );
+      </StudentContextProvider>
+    );
+  }
 }
 
 export default App;
