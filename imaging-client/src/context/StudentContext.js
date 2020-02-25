@@ -1,5 +1,4 @@
 import React, { createContext, useReducer, useEffect } from 'react';
-import axios from 'axios';
 import { studentReducer } from './studentReducer';
 
 export const StudentContext = createContext();

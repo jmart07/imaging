@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import StudentContextProvider from './StudentContext'
+import StudentContextProvider from '../context/StudentContext'
 import Menu from './Menu';
 import Display from './Display';
 import Filter from './Filter';
