@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import StudentContextProvider from '../context/StudentContext'
 import Menu from './Menu';
 import Display from './Display';
 import Filter from './Filter';
@@ -27,7 +26,6 @@ class App extends Component {
 
   render() {
     return (
-      <StudentContextProvider>
         <div className='container'>
           <div className='left'>
             <div className='logo'>LOGO</div>
@@ -38,7 +36,6 @@ class App extends Component {
             <Display />
           </div>
         </div>
-      </StudentContextProvider>
     );
   }
 }

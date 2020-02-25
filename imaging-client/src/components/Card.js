@@ -1,51 +1,28 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Rect } from 'react-konva';
-import Portrait from './Portrait';
+import useImage from 'use-image';
 import { connect } from 'react-redux';
 
-const Card = (props) => {
-  const cardWidth = 2 * (3.375 * 96);
-  const cardHeight = 2 *(2.125 * 96);
-  const cornerRadius = 2 * ((1/8) * 96);
+class Card extends Component {
+  render() {
+    console.log('card mount');
+    
+    // const [image] = useImage('https://konvajs.org/assets/lion.png');
+    // console.log(image);
 
-  const [portrait, setPortrait] = useState({
-    x: 10,
-    y: 10,
-    width: 100,
-    height: 100,
-    id: 'portrait1'
-  });
-  const [selectedId, selectPortrait] = useState();
-
-  return (
-    <>
-      <Rect
-        x={30}
-        y={30}
-        width={cardWidth}
-        height={cardHeight}
-        fill="ivory"
-        cornerRadius={cornerRadius}
-        shadowBlur={10}
-      />
-      <Portrait
-        shapeProps={portrait}
-        isSelected={portrait.id === selectedId}
-        onSelect={() => {
-          selectPortrait(portrait.id);
-        }}
-        onChange={newAttrs => {
-          setPortrait(newAttrs);
-        }}
-      />
-    </>
-  );
+    return (
+      <>
+        <Rect />
+      </>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-    test: 'test'
+    photos: state.photos
   }
 }
- 
+
 export default connect(mapStateToProps)(Card);
+// export default Card;

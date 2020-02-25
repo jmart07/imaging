@@ -23,7 +23,7 @@ const Display = () => {
       height={stageHeight}
     >
       <Layer>
-        <Card />
+        {/* <Card /> */}
       </Layer>
     </Stage>
   )
