@@ -34,7 +34,7 @@ const Card = () => {
           selectPortrait(portrait.id);
         }}
         onChange={newAttrs => {
-          
+          setPortrait(newAttrs);
         }}
       />
     </>

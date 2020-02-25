@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Image, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
-const Portrait = ({ isSelected }) => {
+const Portrait = ({ portraitProps, isSelected, onSelect, onChange }) => {
 
   const portraitRef = useRef();
   const trRef = useRef();
@@ -19,13 +19,10 @@ const Portrait = ({ isSelected }) => {
   return(
     <>
       <Image
-        onClick={()=> console.log('click')}
+        onClick={onSelect}
         image={portrait}
         ref={portraitRef}
-        x={10}
-        y={10}
-        width={100}
-        height={100}
+        {...portraitProps}
         draggable
       />
       { isSelected && (
