@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Rect } from 'react-konva';
 import Portrait from './Portrait';
+import { connect } from 'react-redux';
 
-const Card = () => {
+const Card = (props) => {
   const cardWidth = 2 * (3.375 * 96);
   const cardHeight = 2 *(2.125 * 96);
   const cornerRadius = 2 * ((1/8) * 96);
@@ -40,5 +41,11 @@ const Card = () => {
     </>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    test: 'test'
+  }
+}
  
-export default Card;
+export default connect(mapStateToProps)(Card);
