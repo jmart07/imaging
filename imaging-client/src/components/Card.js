@@ -3,26 +3,19 @@ import { Rect } from 'react-konva';
 import useImage from 'use-image';
 import { connect } from 'react-redux';
 
-class Card extends Component {
-  render() {
-    console.log('card mount');
-    
-    // const [image] = useImage('https://konvajs.org/assets/lion.png');
-    // console.log(image);
+const Card = (props) => {
 
-    return (
-      <>
-        <Rect />
-      </>
-    );
-  }
+  console.log(props.layouts);
+
+  return (
+    <Rect x={100} y={100} height={100} width={100} fill="black" />
+  );
 }
 
 const mapStateToProps = (state) => {
   return {
-    photos: state.photos
+    layouts: state.layouts
   }
 }
 
 export default connect(mapStateToProps)(Card);
-// export default Card;
