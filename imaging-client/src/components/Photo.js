@@ -1,10 +1,16 @@
 import React, { useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import { Image, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
 const Photo = (props) => {
+
+  console.log(props.element);
+
   const photoRef = useRef();
   const trRef = useRef();
+
+  const isSelected = props.selectedId === props.element.id
 
   useEffect(() => {
     if(isSelected) {
@@ -15,17 +21,21 @@ const Photo = (props) => {
 
   const [image] = useImage('https://konvajs.org/assets/lion.png');
   
+  const onSelect = () => {
+    console.log('onselect');
+  }
+
 
   return(
     <>
       <Image
-        onClick={this.props.onSelect}
+        onClick={onSelect}
         image={image}
         ref={photoRef}
-        {...this.props}
+        {...props.element}
         draggable
       />
-      { this.props.isSelected && (
+      { isSelected && (
         <Transformer
           ref={trRef}
           boundBoxFunc={(oldBox, newBox) => {
@@ -35,6 +45,13 @@ const Photo = (props) => {
       )}
     </>
   )
+}
+
+const mapStateToProps = (state) => {
+  return{
+    selectedId: state.selectedId,
+    element: state.elements.find(element => element.id === 1 && element.type === 'photo')
+  }
 }
 
 export default connect(mapStateToProps)(Photo);

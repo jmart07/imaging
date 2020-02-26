@@ -4,10 +4,11 @@ const initState = {
     { id: 2, name: "faculty" }
   ],
   elements: [
-    { layout_id: 1, type: "photo", x: 0, y: 0, width: 100, height: 100},
-    { layout_id: 1, type: "id", x: 0, y: 0, width: 100, height: 100},
-    { layout_id: 1, type: "name", x: 0, y: 0, width: 100, height: 100}
-  ]
+    { id: 1, layout_id: 1, type: "photo", x: 0, y: 0, width: 100, height: 100},
+    { id: 2, layout_id: 1, type: "id", x: 0, y: 0, width: 100, height: 100},
+    { id: 3, layout_id: 1, type: "name", x: 0, y: 0, width: 100, height: 100}
+  ],
+  selectedId: 0
 }
 
 const rootReducer = (state = initState, action) => {
