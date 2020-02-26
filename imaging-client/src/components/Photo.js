@@ -3,55 +3,62 @@ import { connect } from 'react-redux';
 import { Image, Transformer } from 'react-konva';
 import useImage from 'use-image';
 
-const Photo = (props) => {
+const Photo = (props, transformShape) => {
 
-  console.log(props.element);
-
-  const photoRef = useRef();
+  const shapeRef = useRef();
   const trRef = useRef();
 
-  const isSelected = props.selectedId === props.element.id
+  const isSelected = props.selectedId
 
   useEffect(() => {
+    console.log('useEffect photo');
     if(isSelected) {
-      trRef.current.setNode(photoRef.current);
+      trRef.current.setNode(shapeRef.current);
       trRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
-
-  const [image] = useImage('https://konvajs.org/assets/lion.png');
   
   const onSelect = () => {
     console.log('onselect');
   }
 
-
+  const [image] = useImage('https://konvajs.org/assets/lion.png');
+  
   return(
     <>
       <Image
-        onClick={onSelect}
         image={image}
-        ref={photoRef}
-        {...props.element}
+        ref={shapeRef}
+        { ...props.photo }
         draggable
+        onDragEnd={(e) => {
+          console.log('drag end')
+          props.transformShape(
+            {
+              ...props.photo,
+              x: e.target.x(),
+              y: e.target.y()
+          });
+        }}
       />
-      { isSelected && (
-        <Transformer
-          ref={trRef}
-          boundBoxFunc={(oldBox, newBox) => {
-            return newBox;
-          }}
-        />
-      )}
     </>
   )
 }
 
 const mapStateToProps = (state) => {
+  console.log('map')
+  console.log(state.elements.photos.find(element => element.id === 1))
+
   return{
     selectedId: state.selectedId,
-    element: state.elements.find(element => element.id === 1 && element.type === 'photo')
+    photo: state.elements.photos.find(element => element.id === 1)
   }
 }
 
-export default connect(mapStateToProps)(Photo);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    transformShape: (shape) => dispatch({type: 'UPDATE_PHOTO', shape: shape})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Photo);
