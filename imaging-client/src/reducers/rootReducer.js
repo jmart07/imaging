@@ -1,18 +1,13 @@
 const initState = {
-  layouts: [{
-    id: 1,
-    name: "default",
-    idShow: 1,
-    idX: 100,
-    idY: 100,
-    nameShow: 1,
-    nameX: 100,
-    nameY: 100,
-    photoShow: 1,
-    photoX: 100,
-    photoY: 100
-  }],
-  selectedID: 0
+  layouts: [
+    { id: 1, name: "student" },
+    { id: 2, name: "faculty" }
+  ],
+  elements: [
+    { layout_id: 1, type: "photo", x: 0, y: 0, width: 100, height: 100},
+    { layout_id: 1, type: "id", x: 0, y: 0, width: 100, height: 100},
+    { layout_id: 1, type: "name", x: 0, y: 0, width: 100, height: 100}
+  ]
 }
 
 const rootReducer = (state = initState, action) => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Menu from './Menu';
-import Display from './Display';
+import Canvas from './Canvas';
 import Filter from './Filter';
 
 import './app.css';
@@ -33,7 +33,7 @@ class App extends Component {
           </div>
           <div className='right'>
             <Filter />
-            <Display />
+            <Canvas />
           </div>
         </div>
     );
