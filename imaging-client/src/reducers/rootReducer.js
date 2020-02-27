@@ -14,7 +14,16 @@ const initState = {
         id: "photo1"
       }
     ]
+  },
+  checklist: {
+    idNumber: false,
+    name: false,
+    exportId: false,
+    barcode: false,
+    grade: false
   }
+
+
 }
 
 const rootReducer = (state = initState, action) => {
@@ -38,7 +47,19 @@ const rootReducer = (state = initState, action) => {
           [action.shapeType]: action.newShapes
         }
       }
-      
+    
+    case 'TOGGLE_CHECK':
+      const checkedId = action.checkId.target.id;
+
+      return {
+        ...state,
+        checklist: {
+          ...state.checklist,
+          [checkedId]: !state.checklist.checkId
+        }
+
+      }
+
     default:
       return state;
   }

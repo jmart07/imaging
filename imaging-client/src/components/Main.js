@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Menu from './Menu';
+import Checklist from './Checklist';
 import Canvas from './Canvas';
 import Filter from './Filter';
 
@@ -28,7 +28,7 @@ class App extends Component {
         <div className='container'>
           <div className='left'>
             <div className='logo'>LOGO</div>
-            <Menu />
+            <Checklist />
           </div>
           <div className='right'>
             <Filter />

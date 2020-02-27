@@ -26,19 +26,19 @@ const PhotosContainer = (props) => {
   );
 };
   
-  const mapStateToProps = (state) => {
-    return{
-      selectedId: state.selectedId,
-      photos: state.elements.photos
-    }
+const mapStateToProps = (state) => {
+  return{
+    selectedId: state.selectedId,
+    photos: state.elements.photos
   }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return {
-      selectShape: (id) => dispatch({type: 'SELECT_SHAPE', shapeId: id}),
-      setPhotos: (photos) => dispatch({type: 'SET_SHAPE', shapeType: 'photos', newShapes: photos})
-    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectShape: (id) => dispatch({type: 'SELECT_SHAPE', shapeId: id}),
+    setPhotos: (photos) => dispatch({type: 'SET_SHAPE', shapeType: 'photos', newShapes: photos})
   }
-  
-  export default connect(mapStateToProps, mapDispatchToProps)(PhotosContainer);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PhotosContainer);
   
