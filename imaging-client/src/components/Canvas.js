@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Stage, Layer } from 'react-konva';
 import { Provider, ReactReduxContext } from 'react-redux';
 import Card from './Card';
+import Photos from './Photos';
+import Rectangles from './Rectangles';
 
 const Canvas = () => {
   const [stageWidth, setStageWidth] = useState(window.innerWidth * .75);
@@ -24,7 +26,8 @@ const Canvas = () => {
         <Stage className='stage' width={stageWidth} height={stageHeight}>
           <Provider store={store}>
             <Layer>
-              <Card />
+              <Photos />
+              {/* <Rectangles /> */}
             </Layer>
           </Provider>
         </Stage>

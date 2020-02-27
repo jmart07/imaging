@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Photo from './Photo';
+import Test from './Rectangles'
 
 const Card = (props) => {
 
@@ -11,11 +11,4 @@ const Card = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    // layout: state.layouts.find(layout => layout.id === 1),
-    // selectedId: state.selectedId
-  }
-}
-
-export default connect(mapStateToProps)(Card);
+export default Card;

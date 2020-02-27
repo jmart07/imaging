@@ -3,11 +3,11 @@ const initState = {
     { id: 1, name: "student" },
     { id: 2, name: "faculty" }
   ],
-  selectedId: null,
+  selectedId: '',
   elements: {
     photos: [
-      {id: 1, x: 10, y: 10, width: 50, height: 50},
-      {id: 2, x: 0, y: 0, width: 100, height: 100}
+      {id: 'first', x: 10, y: 10, width: 5000, height: 50},
+      {id: 'second', x: 10, y: 100, width: 100, height: 100}
     ]
   }
 }
@@ -18,8 +18,8 @@ const rootReducer = (state = initState, action) => {
   console.log(action);
 
   switch (action.type) {
-    case 'UPDATE_PHOTO':
-      console.log('update photo')
+    case 'TRANSFORM_SHAPE':
+      console.log('transform shape')
 
       const newPhotos = state.elements.photos.map((photo) => {
         if(photo.id !== action.shape.id) {
@@ -37,12 +37,12 @@ const rootReducer = (state = initState, action) => {
       }
     
     case 'SELECT_SHAPE':
-      console.log('toggle selected');
+      console.log('select shape');
       console.log(action.id)
-      // return{
-      //   ...state,
-      //   selectedId: action.id
-      // }
+      return{
+        ...state,
+        selectedId: action.id
+      }
 
     default:
       return state;
