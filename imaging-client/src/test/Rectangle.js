@@ -90,18 +90,7 @@ const App = () => {
   const [selectedId, selectShape] = React.useState(null);
 
   return (
-    <Stage
-      width={window.innerWidth}
-      height={window.innerHeight}
-      onMouseDown={e => {
-        // deselect when clicked on empty area
-        const clickedOnEmpty = e.target === e.target.getStage();
-        if (clickedOnEmpty) {
-          selectShape(null);
-        }
-      }}
-    >
-      <Layer>
+    <>
         {rectangles.map((rect, i) => {
           return (
             <Rectangle
@@ -119,9 +108,8 @@ const App = () => {
             />
           );
         })}
-      </Layer>
-    </Stage>
+      </>
   );
 };
 
-render(<App />, document.getElementById("root"));
+export default App;
