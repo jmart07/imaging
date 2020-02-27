@@ -1,65 +1,66 @@
-import React, { useEffect, useRef } from 'react';
-import { Image, Transformer } from 'react-konva';
-import useImage from 'use-image';
+import React from "react";
+import { Image, Transformer } from "react-konva";
 
-const Photo = (shapeProps, isSelected, onSelect, onChange) => {
-  console.log('photo')
-  console.log(shapeProps)
+const Photo = ({ shapeProps, isSelected, onSelect, onChange }) => {
+  const shapeRef = React.useRef();
+  const trRef = React.useRef();
 
-  const shapeRef = useRef();
-  const trRef = useRef();
-
-  useEffect(() => {
-    if(isSelected) {
-      console.log('isselected')
+  React.useEffect(() => {
+    if (isSelected) {
+      // attaching transformer to node manually with refs
       trRef.current.setNode(shapeRef.current);
       trRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
-  
-  const [image] = useImage('https://konvajs.org/assets/lion.png');
-  
-  return(
+
+  return (
     <>
       <Image
-        image={image}
         onClick={onSelect}
         ref={shapeRef}
-        { ...shapeProps }
+        {...shapeProps}
         draggable
-        onDragEnd={(e) => {
-          console.log('drag end');
-          console.log(e.target.x());
-          // onChange({
-          //   ...shapeProps,
-          //   x: e.target.x(),
-          //   y: e.target.y()
-          // })
+        onDragEnd={e => {
+          onChange({
+            ...shapeProps,
+            x: e.target.x(),
+            y: e.target.y()
+          });
         }}
         onTransformEnd={e => {
+          // transform uses scale but then maps new width/height to store
           const node = shapeRef.current;
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
 
-          node.scaleX(1);
-          node.scaleY(1);
-          // onChange({
-          //   ...shapeProps,
-          //   x: node.x(),
-          //   y: node.y(),
-          // });
+          // this was to reset scale to match data better (according to documentation) but it was causing issues
+          // node.scaleX(1);
+          // node.scaleY(1);
+          
+          onChange({
+            ...shapeProps,
+            x: node.x(),
+            y: node.y(),
+            // set minimal value
+            width: Math.max(5, node.width() * scaleX),
+            height: Math.max(node.height() * scaleY)
+          });
         }}
       />
       {isSelected && (
         <Transformer
           ref={trRef}
           boundBoxFunc={(oldBox, newBox) => {
+            // limit resize
+            if (newBox.width < 5 || newBox.height < 5) {
+              return oldBox;
+            }
             return newBox;
           }}
         />
       )}
     </>
-  )
-}
+  );
+};
 
 export default Photo;

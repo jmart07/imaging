@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Stage, Layer } from 'react-konva';
 import { Provider, ReactReduxContext } from 'react-redux';
-import Card from './Card';
-import Photos from './Photos';
-import Rectangles from './Rectangles';
+import PhotosContainer from './PhotosContainer';
 
 const Canvas = () => {
+  // using local state to store stage sizes for dynamic rendering
   const [stageWidth, setStageWidth] = useState(window.innerWidth * .75);
   const [stageHeight, setStageHeight] = useState(window.innerHeight);
 
@@ -21,13 +20,14 @@ const Canvas = () => {
   });
 
   return(
+    // need to bridge store to children of Stage because Stage creates a "fresh renderer"
+    // https://github.com/konvajs/react-konva/issues/311
     <ReactReduxContext.Consumer>
       {({ store }) => (
         <Stage className='stage' width={stageWidth} height={stageHeight}>
           <Provider store={store}>
             <Layer>
-              <Photos />
-              {/* <Rectangles /> */}
+              <PhotosContainer />
             </Layer>
           </Provider>
         </Stage>
