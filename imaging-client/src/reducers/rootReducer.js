@@ -11,16 +11,7 @@ const initState = {
         y: 10,
         width: 100,
         height: 100,
-        fill: "red",
         id: "photo1"
-      },
-      {
-        x: 150,
-        y: 150,
-        width: 100,
-        height: 100,
-        fill: "green",
-        id: "photo2"
       }
     ]
   }
@@ -28,8 +19,8 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
   console.log('root reducer');
-  console.log(state);
-  console.log(action);
+  console.log('state', state);
+  console.log('action', action);
 
   switch (action.type) {
 
@@ -44,7 +35,7 @@ const rootReducer = (state = initState, action) => {
         ...state,
         elements: {
           ...state.elements,
-          photos: action.newPhotos
+          [action.shapeType]: action.newShapes
         }
       }
       

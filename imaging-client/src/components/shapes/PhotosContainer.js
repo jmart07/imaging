@@ -6,7 +6,6 @@ const PhotosContainer = (props) => {
   return (
     <>
         {props.photos.map((photo, i) => {
-          console.log(photo.id)
           return (
             <Photo
               key={i}
@@ -16,8 +15,6 @@ const PhotosContainer = (props) => {
                 props.selectShape(photo.id);
               }}
               onChange={newAttrs => {
-                console.log('onchange')
-                console.log(newAttrs)
                 const newPhotos = props.photos.slice();
                 newPhotos[i] = newAttrs;
                 props.setPhotos(newPhotos);
@@ -30,8 +27,6 @@ const PhotosContainer = (props) => {
 };
   
   const mapStateToProps = (state) => {
-    console.log('mapstatetoprops');
-    console.log(state.elements.photos)
     return{
       selectedId: state.selectedId,
       photos: state.elements.photos
@@ -39,10 +34,9 @@ const PhotosContainer = (props) => {
   }
   
   const mapDispatchToProps = (dispatch) => {
-    console.log('mapdispatchtoprops');
     return {
       selectShape: (id) => dispatch({type: 'SELECT_SHAPE', shapeId: id}),
-      setPhotos: (photos) => dispatch({type: 'SET_PHOTOS', newPhotos: photos})
+      setPhotos: (photos) => dispatch({type: 'SET_SHAPE', shapeType: 'photos', newShapes: photos})
     }
   }
   

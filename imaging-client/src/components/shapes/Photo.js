@@ -1,5 +1,6 @@
 import React from "react";
 import { Image, Transformer } from "react-konva";
+import useImage from 'use-image';
 
 const Photo = ({ shapeProps, isSelected, onSelect, onChange }) => {
   const shapeRef = React.useRef();
@@ -13,9 +14,12 @@ const Photo = ({ shapeProps, isSelected, onSelect, onChange }) => {
     }
   }, [isSelected]);
 
+  const [image] = useImage('https://konvajs.org/assets/lion.png');
+
   return (
     <>
       <Image
+        image={image}
         onClick={onSelect}
         ref={shapeRef}
         {...shapeProps}
@@ -33,10 +37,10 @@ const Photo = ({ shapeProps, isSelected, onSelect, onChange }) => {
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
 
-          // this was to reset scale to match data better (according to documentation) but it was causing issues
-          // node.scaleX(1);
-          // node.scaleY(1);
-          
+          // reset scale to match data better (according to documentation)
+          node.scaleX(1);
+          node.scaleY(1);
+
           onChange({
             ...shapeProps,
             x: node.x(),
