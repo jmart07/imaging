@@ -5,7 +5,9 @@ import Photo from './Photo';
 const Card = (props) => {
 
   return (
+    <>
       <Photo />
+    </>
   )
 }
 

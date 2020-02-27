@@ -3,7 +3,7 @@ const initState = {
     { id: 1, name: "student" },
     { id: 2, name: "faculty" }
   ],
-  selectedId: 0,
+  selectedId: null,
   elements: {
     photos: [
       {id: 1, x: 10, y: 10, width: 50, height: 50},
@@ -14,12 +14,13 @@ const initState = {
 
 const rootReducer = (state = initState, action) => {
   console.log('root reducer');
-  console.log(state.elements.photos);
+  console.log(state);
   console.log(action);
 
   switch (action.type) {
     case 'UPDATE_PHOTO':
       console.log('update photo')
+
       const newPhotos = state.elements.photos.map((photo) => {
         if(photo.id !== action.shape.id) {
           return photo;
@@ -34,8 +35,16 @@ const rootReducer = (state = initState, action) => {
           photos: [...newPhotos]
         }
       }
+    
+    case 'SELECT_SHAPE':
+      console.log('toggle selected');
+      console.log(action.id)
+      // return{
+      //   ...state,
+      //   selectedId: action.id
+      // }
 
-      default:
+    default:
       return state;
   }
 
