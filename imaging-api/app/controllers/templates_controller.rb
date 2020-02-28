@@ -5,12 +5,12 @@ class TemplatesController < ApplicationController
   def index
     @templates = Template.all
 
-    render json: @templates
+    render json: @templates.to_json(include: :shapes)
   end
 
   # GET /templates/1
   def show
-    render json: @template
+    render json: @template.to_json(include: :shapes)
   end
 
   # POST /templates
