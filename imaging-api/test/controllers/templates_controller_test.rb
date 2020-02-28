@@ -12,7 +12,7 @@ class TemplatesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create template" do
     assert_difference('Template.count') do
-      post templates_url, params: { template: { name: @template.name, shapes_id: @template.shapes_id } }, as: :json
+      post templates_url, params: { template: { name: @template.name } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class TemplatesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update template" do
-    patch template_url(@template), params: { template: { name: @template.name, shapes_id: @template.shapes_id } }, as: :json
+    patch template_url(@template), params: { template: { name: @template.name } }, as: :json
     assert_response 200
   end
 

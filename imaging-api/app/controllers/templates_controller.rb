@@ -46,6 +46,6 @@ class TemplatesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def template_params
-      params.require(:template).permit(:name, :shapes_id)
+      params.require(:template).permit(:name)
     end
 end

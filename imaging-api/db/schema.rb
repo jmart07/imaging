@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_19_014210) do
+ActiveRecord::Schema.define(version: 2020_02_28_182156) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "shapes", force: :cascade do |t|
+    t.string "type"
+    t.integer "x"
+    t.integer "y"
+    t.integer "width"
+    t.integer "height"
+    t.string "text"
+    t.integer "fontsize"
+    t.bigint "templates_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["templates_id"], name: "index_shapes_on_templates_id"
+  end
 
   create_table "students", force: :cascade do |t|
     t.string "id_number"
@@ -25,4 +42,11 @@ ActiveRecord::Schema.define(version: 2020_02_19_014210) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "templates", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "shapes", "templates", column: "templates_id"
 end

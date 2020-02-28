@@ -9,7 +9,6 @@ class CreateStudents < ActiveRecord::Migration[6.0]
       t.date :graduation
       t.string :note1
       t.string :note2
-
       t.timestamps
     end
   end
