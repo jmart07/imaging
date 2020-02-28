@@ -42,15 +42,15 @@ p "Seeding shapes"
 shapes = [
     {
       id: 1,
-      type: 'idNumber',
+      shapeType: 'idNumber',
       x: 390,
       y: 120,
       text: '1234567',
-      fontSize: 30
+      fontsize: 30
     },
     {
       id: 1,
-      type: 'photo',
+      shapeType: 'photo',
       x: 80,
       y: 60,
       width: 230,
@@ -58,40 +58,40 @@ shapes = [
     },
     {
       id: 1,
-      type: 'name',
+      shapeType: 'name',
       x: 390,
       y: 90,
       text: 'John Martin',
-      fontSize: 30
+      fontsize: 30
     },
     {
       id: 1,
-      type: 'exportId',
+      shapeType: 'exportId',
       x: 390,
       y: 150,
       text: 'EXPORTID',
-      fontSize: 30
+      fontsize: 30
     },
     {
       id: 1,
-      type: 'barcode',
+      shapeType: 'barcode',
       x: 130,
       y: 300,
       text: 'BARCODE',
-      fontSize: 100
+      fontsize: 100
     },
     {
       id: 1,
-      type: 'grade',
+      shapeType: 'grade',
       x: 390,
       y: 240,
       text: 'Class of 2020',
-      fontSize: 30
+      fontsize: 30
     }
 ]
 
 shapes.each {|shape|
-    Shape.create({shape})
+    Shape.create(shape)
 }
 
 p "Done seeding"
