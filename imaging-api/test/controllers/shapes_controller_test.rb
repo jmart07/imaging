@@ -12,7 +12,7 @@ class ShapesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create shape" do
     assert_difference('Shape.count') do
-      post shapes_url, params: { shape: { fontsize: @shape.fontsize, height: @shape.height, templates_id: @shape.templates_id, text: @shape.text, type: @shape.type, width: @shape.width, x: @shape.x, y: @shape.y } }, as: :json
+      post shapes_url, params: { shape: {  } }, as: :json
     end
 
     assert_response 201
@@ -24,7 +24,7 @@ class ShapesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update shape" do
-    patch shape_url(@shape), params: { shape: { fontsize: @shape.fontsize, height: @shape.height, templates_id: @shape.templates_id, text: @shape.text, type: @shape.type, width: @shape.width, x: @shape.x, y: @shape.y } }, as: :json
+    patch shape_url(@shape), params: { shape: {  } }, as: :json
     assert_response 200
   end
 

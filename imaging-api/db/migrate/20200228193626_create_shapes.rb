@@ -1,14 +1,14 @@
 class CreateShapes < ActiveRecord::Migration[6.0]
   def change
     create_table :shapes do |t|
-      t.string :type
+      t.integer :templates_id
+      t.string :shape_type
       t.integer :x
       t.integer :y
       t.integer :width
       t.integer :height
       t.string :text
-      t.integer :fontsize
-      t.references :templates, null: false, foreign_key: true
+      t.integer :font_size
 
       t.timestamps
     end

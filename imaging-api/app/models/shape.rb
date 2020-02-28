@@ -1,3 +1,3 @@
 class Shape < ApplicationRecord
-  belongs_to :templates
+  belongs_to :template
 end

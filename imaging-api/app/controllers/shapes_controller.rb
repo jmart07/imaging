@@ -46,6 +46,6 @@ class ShapesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def shape_params
-      params.require(:shape).permit(:type, :x, :y, :width, :height, :text, :fontsize, :templates_id)
+      params.fetch(:shape, {})
     end
 end
