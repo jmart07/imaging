@@ -12,9 +12,8 @@ const initState = {
       type: 'idNumber',
       x: 390,
       y: 120,
-      width: 160,
-      height: 40,
-      text: '1234567'
+      text: '1234567',
+      fontSize: 30
     },
     {
       id: uuid(),
@@ -29,28 +28,32 @@ const initState = {
       type: 'name',
       x: 390,
       y: 90,
-      text: 'John Martin'
+      text: 'John Martin',
+      fontSize: 30
     },
     {
       id: uuid(),
       type: 'exportId',
       x: 390,
-      y: 180,
-      text: 'EXPORTID'
+      y: 150,
+      text: 'EXPORTID',
+      fontSize: 30
     },
     {
       id: uuid(),
       type: 'barcode',
       x: 130,
       y: 300,
-      text: 'BARCODE'
+      text: 'BARCODE',
+      fontSize: 100
     },
     {
       id: uuid(),
       type: 'grade',
       x: 390,
       y: 240,
-      text: 'Class of 2020'
+      text: 'Class of 2020',
+      fontSize: 30
     }
   ],
   checklist: {

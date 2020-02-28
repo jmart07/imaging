@@ -15,7 +15,7 @@ const Card = () => {
         y={30}
         width={cardWidth}
         height={cardHeight}
-        fill="ivory"
+        fill="white"
         cornerRadius={cornerRadius}
         shadowBlur={10}
       />

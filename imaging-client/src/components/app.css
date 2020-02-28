@@ -4,12 +4,16 @@
   /* border: solid black 1px; */
 }
 
+body {
+  background-color: #f92;
+}
+
 .container {
   display: flex;
   margin: 10px;
   padding: 5px;
   min-height: 400px;
-  background-color: gray;
+  background-color: #257;
 }
 .left {
   width: 25%;
@@ -18,14 +22,10 @@
 .menu {
   display: flex;
   flex-direction: column;
-  background-color: lightgray;
+  background-color: #fed;
 }
 
 .stage {
   padding: 5px;
   background-color: lightblue;
-}
-
-.layer {
-  background-color: lightgoldenrodyellow;
 }
