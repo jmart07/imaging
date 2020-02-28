@@ -1,6 +1,7 @@
 import uuid from 'react-uuid';
 
 const initState = {
+  loading: true,
   selectedId: '',
   checklist: {
     idNumber: true,

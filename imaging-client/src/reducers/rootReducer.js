@@ -7,13 +7,19 @@ const rootReducer = (state = initState, action) => {
 
   switch (action.type) {
 
+    case 'TOGGLE_LOADING':
+      return {
+        ...state,
+        loading: !state.loading
+      }
+
     case 'GET_SHAPE':
-      return{
+      return {
         ...state,
         selectedId: action.shapeId
       }
 
-    case 'SET_SHAPE':
+    case 'STORE_SHAPE':
       const newShapes = state.shapes.map((shape) => {
         if(shape.id !== action.shapeId) {
           return shape;
@@ -38,7 +44,7 @@ const rootReducer = (state = initState, action) => {
 
       }
     
-    case 'UPDATE_STUDENTS':
+    case 'STORE_STUDENTS':
       console.log('newstudents', action.newStudents);
 
       return {
@@ -46,11 +52,12 @@ const rootReducer = (state = initState, action) => {
         students: action.newStudents
       }
 
-    case 'UPDATE_TEMPLATES':
+    case 'STORE_TEMPLATES':
       console.log('newtemplates', action.newTemplates);
       
       return {
         ...state,
+        loading: false,
         templates: action.newTemplates
       }
 
