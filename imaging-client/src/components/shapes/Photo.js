@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Image, Transformer } from "react-konva";
 import useImage from 'use-image';
 
-const PhotoInner = ({shapeProps, isSelected, onSelect, onChange }) => {
+const PhotoInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
 
@@ -24,6 +24,7 @@ const PhotoInner = ({shapeProps, isSelected, onSelect, onChange }) => {
         onClick={onSelect}
         ref={shapeRef}
         {...shapeProps}
+        visible={isVisible}
         draggable
         onDragEnd={e => {
           onChange({
@@ -68,19 +69,18 @@ const PhotoInner = ({shapeProps, isSelected, onSelect, onChange }) => {
   );
 };
 
-const Photo = ({shape, selectedId, selectShape, setShape }) => {
+const Photo = ({shape, isVisible, selectedId, selectShape, setShape }) => {
   console.log('shape',shape)
   return (
     <>
       <PhotoInner
         shapeProps={shape}
-        // isVisible={photoVisible}
+        isVisible={isVisible}
         isSelected={shape.id === selectedId}
         onSelect={() => {
           selectShape(shape.id);
         }}
         onChange={newAttrs => {
-          console.log('newattrs', newAttrs)
           setShape(shape.id, newAttrs);
         }}
       />
@@ -89,9 +89,9 @@ const Photo = ({shape, selectedId, selectShape, setShape }) => {
 }
   
 const mapStateToProps = (state) => {
-  console.log('namesmapstate', state)
   return{
     selectedId: state.selectedId,
+    isVisible: state.checklist.photo,
     shape: state.shapes.find((shape) => shape.type === 'photo')
   }
 }

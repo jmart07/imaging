@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Text, Transformer } from "react-konva";
 
-const NameInner = ({shapeProps, isSelected, onSelect, onChange }) => {
+const NameInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
 
@@ -20,6 +20,7 @@ const NameInner = ({shapeProps, isSelected, onSelect, onChange }) => {
         onClick={onSelect}
         ref={shapeRef}
         {...shapeProps}
+        visible={isVisible}
         draggable
         onDragEnd={e => {
           onChange({
@@ -64,13 +65,12 @@ const NameInner = ({shapeProps, isSelected, onSelect, onChange }) => {
   );
 };
 
-const Name = ({shape, selectedId, selectShape, setShape }) => {
-  console.log('shape',shape)
+const Name = ({shape, isVisible, selectedId, selectShape, setShape }) => {
   return (
     <>
       <NameInner
         shapeProps={shape}
-        // isVisible={photoVisible}
+        isVisible={isVisible}
         isSelected={shape.id === selectedId}
         onSelect={() => {
           selectShape(shape.id);
@@ -85,9 +85,9 @@ const Name = ({shape, selectedId, selectShape, setShape }) => {
 }
   
 const mapStateToProps = (state) => {
-  console.log('namesmapstate', state)
   return{
     selectedId: state.selectedId,
+    isVisible: state.checklist.name,
     shape: state.shapes.find((shape) => shape.type === 'name')
   }
 }

@@ -2,9 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Text, Transformer } from "react-konva";
 
-const IdNumberInner = ({shapeProps, isSelected, onSelect, onChange }) => {
+const IdNumberInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
+
+  console.log('id', isVisible)
 
   React.useEffect(() => {
     if (isSelected) {
@@ -20,6 +22,7 @@ const IdNumberInner = ({shapeProps, isSelected, onSelect, onChange }) => {
         onClick={onSelect}
         ref={shapeRef}
         {...shapeProps}
+        visible={isVisible}
         draggable
         onDragEnd={e => {
           onChange({
@@ -64,19 +67,17 @@ const IdNumberInner = ({shapeProps, isSelected, onSelect, onChange }) => {
   );
 };
 
-const IdNumber = ({shape, selectedId, selectShape, setShape }) => {
-  console.log('shape',shape)
+const IdNumber = ({shape, isVisible, selectedId, selectShape, setShape }) => {
   return (
     <>
       <IdNumberInner
         shapeProps={shape}
-        // isVisible={photoVisible}
+        isVisible={isVisible}
         isSelected={shape.id === selectedId}
         onSelect={() => {
           selectShape(shape.id);
         }}
         onChange={newAttrs => {
-          console.log('newattrs', newAttrs)
           setShape(shape.id, newAttrs);
         }}
       />
@@ -85,9 +86,9 @@ const IdNumber = ({shape, selectedId, selectShape, setShape }) => {
 }
   
 const mapStateToProps = (state) => {
-  console.log('namesmapstate', state)
   return{
     selectedId: state.selectedId,
+    isVisible: state.checklist.idNumber,
     shape: state.shapes.find((shape) => shape.type === 'idNumber')
   }
 }
