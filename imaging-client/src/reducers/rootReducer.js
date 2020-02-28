@@ -37,6 +37,15 @@ const rootReducer = (state = initState, action) => {
         }
 
       }
+    
+    case 'GET_STUDENTS':
+      console.log('newstudents', action.newStudents);
+
+      return {
+        ...state,
+        students: action.newStudents
+      }
+
 
     default:
       return state;

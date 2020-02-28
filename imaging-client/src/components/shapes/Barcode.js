@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { Text, Transformer } from "react-konva";
 
 const BarcodeInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => {
-  const shapeRef = React.useRef();
-  const trRef = React.useRef();
+  const shapeRef = useRef();
+  const trRef = useRef();
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (isSelected) {
       // attaching transformer to node manually with refs
       trRef.current.setNode(shapeRef.current);

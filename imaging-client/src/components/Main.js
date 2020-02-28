@@ -1,42 +1,37 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import fetchStudents from '../api/fetchStudents';
 import Checklist from './Checklist';
 import Canvas from './Canvas';
 import Filter from './Filter';
-
 import './app.css';
 
-class App extends Component {
-  state = {
-    students: []
-  }
+const Main = ({getStudents}) => {
 
-  componentDidMount() {
-    this.getStudents();
-  }
+  useEffect(() => {
+    console.log('fetch',fetchStudents());
+    // console.log("temp", temp)
+    // getStudents(temp);
+  }, []);
 
-  getStudents = () => {
-    axios.get('http://localhost:3000/students')
-    .then((response) => {
-      this.setState({ students: response.data })
-    })
-    .catch((error) => console.log(error));
-  }
-
-  render() {
-    return (
-        <div className='container'>
-          <div className='left'>
-            <div className='logo'>LOGO</div>
-            <Checklist />
-          </div>
-          <div className='right'>
-            <Filter />
-            <Canvas />
-          </div>
+  return (
+      <div className='container'>
+        <div className='left'>
+          <div className='logo'>LOGO</div>
+          <Checklist />
         </div>
-    );
+        <div className='right'>
+          <Filter />
+          <Canvas />
+        </div>
+      </div>
+  );
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getStudents: (students) => dispatch({type: 'GET_STUDENTS', newStudents: students})
   }
 }
 
-export default App;
+export default connect(null,mapDispatchToProps)(Main);
