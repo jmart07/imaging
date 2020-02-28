@@ -7,23 +7,33 @@ const initState = {
   ],
   selectedId: '',
   shapes: [
-      {
-        id: uuid(),
-        type: 'photo',
-        x: 10,
-        y: 10,
-        width: 100,
-        height: 100,
-        visible: true
-      },
-      {
-        id: uuid(),
-        type: 'name',
-        x: 100,
-        y: 100,
-        text: 'john martin',
-        visible: true
-      }
+    {
+      id: uuid(),
+      type: 'idNumber',
+      visible: true,
+      x: 10,
+      y: 10,
+      width: 100,
+      height: 100,
+      text: '1234567'
+    },
+    {
+      id: uuid(),
+      type: 'photo',
+      visible: true,
+      x: 10,
+      y: 10,
+      width: 100,
+      height: 100
+    },
+    {
+      id: uuid(),
+      type: 'name',
+      visible: true,
+      x: 100,
+      y: 100,
+      text: 'John Martin'
+    }
   ],
   checklist: {
     idNumber: false,
