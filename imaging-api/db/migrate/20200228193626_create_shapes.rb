@@ -1,7 +1,7 @@
 class CreateShapes < ActiveRecord::Migration[6.0]
   def change
     create_table :shapes do |t|
-      t.integer :templates_id
+      t.integer :template_id
       t.string :shape_type
       t.integer :x
       t.integer :y

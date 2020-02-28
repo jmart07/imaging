@@ -40,7 +40,7 @@ p "Seeding shapes"
 
 shapes = [
     {
-
+      template_id: 1,
       shape_type: 'idNumber',
       x: 390,
       y: 120,
@@ -48,7 +48,7 @@ shapes = [
       font_size: 30
     },
     {
-
+      template_id: 1,
       shape_type: 'photo',
       x: 80,
       y: 60,
@@ -56,7 +56,7 @@ shapes = [
       height: 230
     },
     {
-
+      template_id: 1,
       shape_type: 'name',
       x: 390,
       y: 90,
@@ -64,7 +64,7 @@ shapes = [
       font_size: 30
     },
     {
-
+      template_id: 1,
       shape_type: 'exportId',
       x: 390,
       y: 150,
@@ -72,7 +72,7 @@ shapes = [
       font_size: 30
     },
     {
-
+      template_id: 1,
       shape_type: 'barcode',
       x: 130,
       y: 300,
@@ -80,7 +80,7 @@ shapes = [
       font_size: 100
     },
     {
-
+      template_id: 1,
       shape_type: 'grade',
       x: 390,
       y: 240,

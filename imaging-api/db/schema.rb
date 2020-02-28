@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_193626) do
   enable_extension "plpgsql"
 
   create_table "shapes", force: :cascade do |t|
-    t.integer "templates_id"
+    t.integer "template_id"
     t.string "shape_type"
     t.integer "x"
     t.integer "y"
