@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_183549) do
+ActiveRecord::Schema.define(version: 2020_02_28_184315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "shapes", force: :cascade do |t|
-    t.string "shapeType"
+    t.string "shape_type"
     t.integer "x"
     t.integer "y"
     t.integer "width"
     t.integer "height"
     t.string "text"
-    t.integer "fontsize"
+    t.integer "font_size"
     t.bigint "templates_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
