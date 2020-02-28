@@ -6,13 +6,23 @@ const initState = {
     { id: 2, name: "faculty" }
   ],
   selectedId: '',
-  elements: {
+  shapes: {
     photos: [
       {
         x: 10,
         y: 10,
         width: 100,
         height: 100,
+        id: uuid()
+      }
+    ],
+    texts: [
+      {
+        x: 100,
+        y: 100,
+        width: 100,
+        height: 100,
+        text: 'blah blah',
         id: uuid()
       }
     ]
@@ -25,8 +35,6 @@ const initState = {
     barcode: false,
     grade: false
   }
-
-
 }
 
 const rootReducer = (state = initState, action) => {

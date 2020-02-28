@@ -2,22 +2,22 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Photo from './Photo';
 
-const PhotosContainer = (props) => {
+const PhotosContainer = ({photos, selectedId, selectShape, setPhotos }) => {
   return (
     <>
-        {props.photos.map((photo, i) => {
+        {photos.map((photo, i) => {
           return (
             <Photo
               key={i}
               shapeProps={photo}
-              isSelected={photo.id === props.selectedId}
+              isSelected={photo.id === selectedId}
               onSelect={() => {
-                props.selectShape(photo.id);
+                selectShape(photo.id);
               }}
               onChange={newAttrs => {
-                const newPhotos = props.photos.slice();
+                const newPhotos = photos.slice();
                 newPhotos[i] = newAttrs;
-                props.setPhotos(newPhotos);
+                setPhotos(newPhotos);
               }}
             />
           );
@@ -29,7 +29,7 @@ const PhotosContainer = (props) => {
 const mapStateToProps = (state) => {
   return{
     selectedId: state.selectedId,
-    photos: state.elements.photos
+    photos: state.shapes.photos
   }
 }
 
