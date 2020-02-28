@@ -18,7 +18,7 @@ const Canvas = () => {
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  });
+  }); 
 
   return(
     // need to bridge store to children of Stage because Stage creates a "fresh renderer"

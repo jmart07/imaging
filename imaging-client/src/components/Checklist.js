@@ -9,6 +9,10 @@ const Checklist = ({ checklist, toggleCheck }) => {
         <input type="checkbox" id="idNumber" name="idNumber" checked={checklist.idNumber} onChange={toggleCheck}></input>
       </div>
       <div className='menuRow'>
+        <label htmlFor="photo">Photo</label>
+        <input type="checkbox" id="photo" name="photo" checked={checklist.photo} onChange={toggleCheck}></input>
+      </div>
+      <div className='menuRow'>
         <label htmlFor="name">Name</label>
         <input type="checkbox" id="name" name="name" checked={checklist.name} onChange={toggleCheck}></input>
       </div>

@@ -1,3 +1,5 @@
+import uuid from 'react-uuid';
+
 const initState = {
   layouts: [
     { id: 1, name: "student" },
@@ -11,12 +13,13 @@ const initState = {
         y: 10,
         width: 100,
         height: 100,
-        id: "photo1"
+        id: uuid()
       }
     ]
   },
   checklist: {
     idNumber: false,
+    photo: false,
     name: false,
     exportId: false,
     barcode: false,
