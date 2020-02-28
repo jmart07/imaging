@@ -28,7 +28,6 @@ const PhotosContainer = ({photos, photoVisible, selectedId, selectShape, setPhot
 };
   
 const mapStateToProps = (state) => {
-  console.log('photosmapstate', state)
   return{
     selectedId: state.selectedId,
     photos: state.shapes.photos,

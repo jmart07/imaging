@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Stage, Layer } from 'react-konva';
 import { Provider, ReactReduxContext } from 'react-redux';
-import Card from './elements/Card';
-import PhotosContainer from './elements/PhotosContainer';
-import TextsContainer from './elements/TextsContainer';
+import Card from './shapes/Card';
+import Name from './shapes/Name';
+import Photo from './shapes/Photo';
 
 const Canvas = () => {
   // using local state to store stage sizes for dynamic rendering
@@ -30,8 +30,8 @@ const Canvas = () => {
           <Provider store={store}>
             <Layer>
               <Card />
-              <PhotosContainer />
-              <TextsContainer />
+              <Name />
+              <Photo />
             </Layer>
           </Provider>
         </Stage>

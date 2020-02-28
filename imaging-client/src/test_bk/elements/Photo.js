@@ -1,24 +1,29 @@
 import React from "react";
-import { Text, Transformer } from "react-konva";
+import { Image, Transformer } from "react-konva";
+import useImage from 'use-image';
 
-const TextShape = ({ shapeProps, isSelected, onSelect, onChange }) => {
-  const shapeRef = React.useRef();
-  const trRef = React.useRef();
+const Photo = ({ shapeProps, isVisible, isSelected, onSelect, onChange }) => {
+  const photoRef = React.useRef();
+  const photoTrRef = React.useRef();
 
   React.useEffect(() => {
     if (isSelected) {
       // attaching transformer to node manually with refs
-      trRef.current.setNode(shapeRef.current);
-      trRef.current.getLayer().batchDraw();
+      photoTrRef.current.setNode(photoRef.current);
+      photoTrRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
 
+  const [image] = useImage('https://konvajs.org/assets/lion.png');
+
   return (
     <>
-      <Text
+      <Image
+        image={image}
         onClick={onSelect}
-        ref={shapeRef}
+        ref={photoRef}
         {...shapeProps}
+        visible={isVisible}
         draggable
         onDragEnd={e => {
           onChange({
@@ -29,7 +34,7 @@ const TextShape = ({ shapeProps, isSelected, onSelect, onChange }) => {
         }}
         onTransformEnd={e => {
           // transform uses scale but then maps new width/height to store
-          const node = shapeRef.current;
+          const node = photoRef.current;
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
 
@@ -43,13 +48,13 @@ const TextShape = ({ shapeProps, isSelected, onSelect, onChange }) => {
             y: node.y(),
             // set minimal value
             width: Math.max(5, node.width() * scaleX),
-            height: Math.max(node.height() * scaleY)
+            height: Math.max(5, node.height() * scaleY)
           });
         }}
       />
       {isSelected && (
         <Transformer
-          ref={trRef}
+          ref={photoTrRef}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize
             if (newBox.width < 5 || newBox.height < 5) {
@@ -63,4 +68,4 @@ const TextShape = ({ shapeProps, isSelected, onSelect, onChange }) => {
   );
 };
 
-export default TextShape;
+export default Photo;
