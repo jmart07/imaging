@@ -2,7 +2,7 @@ import React from "react";
 import { Image, Transformer } from "react-konva";
 import useImage from 'use-image';
 
-const Photo = ({ shapeProps, isSelected, onSelect, onChange }) => {
+const Photo = ({ shapeProps, isVisible, isSelected, onSelect, onChange }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
 
@@ -23,6 +23,7 @@ const Photo = ({ shapeProps, isSelected, onSelect, onChange }) => {
         onClick={onSelect}
         ref={shapeRef}
         {...shapeProps}
+        visible={isVisible}
         draggable
         onDragEnd={e => {
           onChange({

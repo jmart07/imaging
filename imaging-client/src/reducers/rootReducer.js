@@ -13,17 +13,17 @@ const initState = {
         y: 10,
         width: 100,
         height: 100,
-        id: uuid()
+        id: uuid(),
+        visible: true
       }
     ],
     texts: [
       {
         x: 100,
         y: 100,
-        width: 100,
-        height: 100,
         text: 'blah blah',
-        id: uuid()
+        id: uuid(),
+        visible: true
       }
     ]
   },
@@ -66,7 +66,7 @@ const rootReducer = (state = initState, action) => {
         ...state,
         checklist: {
           ...state.checklist,
-          [checkedId]: !state.checklist.checkId
+          [checkedId]: !state.checklist[checkedId]
         }
 
       }

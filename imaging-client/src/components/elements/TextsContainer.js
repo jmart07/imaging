@@ -5,24 +5,24 @@ import TextShape from './TextShape';
 const TextsContainer = ({ texts, selectedId, selectShape, setTexts }) => {
   return (
     <>
-        {texts.map((text, i) => {
-          return (
-            <TextShape
-              key={i}
-              shapeProps={text}
-              isSelected={text.id === selectedId}
-              onSelect={() => {
-                selectShape(text.id);
-              }}
-              onChange={newAttrs => {
-                const newTexts = texts.slice();
-                newTexts[i] = newAttrs;
-                setTexts(newTexts);
-              }}
-            />
-          );
-        })}
-      </>
+      {texts.map((text, i) => {
+        return (
+          <TextShape
+            key={i}
+            shapeProps={text}
+            isSelected={text.id === selectedId}
+            onSelect={() => {
+              selectShape(text.id);
+            }}
+            onChange={newAttrs => {
+              const newTexts = texts.slice();
+              newTexts[i] = newAttrs;
+              setTexts(newTexts);
+            }}
+          />
+        );
+      })}
+    </>
   );
 };
   
