@@ -6,8 +6,6 @@ const IdNumberInner = ({shapeProps, isSelected, isVisible, onSelect, onChange })
   const shapeRef = React.useRef();
   const trRef = React.useRef();
 
-  console.log('id', isVisible)
-
   React.useEffect(() => {
     if (isSelected) {
       // attaching transformer to node manually with refs

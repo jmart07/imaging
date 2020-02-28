@@ -5,6 +5,9 @@ import Card from './shapes/Card';
 import IdNumber from './shapes/IdNumber';
 import Photo from './shapes/Photo';
 import Name from './shapes/Name';
+import ExportId from './shapes/ExportId';
+import Barcode from './shapes/Barcode';
+import Grade from './shapes/Grade';
 
 const Canvas = () => {
   // using local state to store stage sizes for dynamic rendering
@@ -34,6 +37,9 @@ const Canvas = () => {
               <IdNumber />
               <Photo />
               <Name />
+              <ExportId />
+              <Barcode />
+              <Grade />
             </Layer>
           </Provider>
         </Stage>

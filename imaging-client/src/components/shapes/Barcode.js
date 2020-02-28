@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Text, Transformer } from "react-konva";
 
-const NameInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => {
+const BarcodeInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => {
   const shapeRef = React.useRef();
   const trRef = React.useRef();
 
@@ -65,10 +65,10 @@ const NameInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => 
   );
 };
 
-const Name = ({shape, isVisible, selectedId, selectShape, setShape }) => {
+const Barcode = ({shape, isVisible, selectedId, selectShape, setShape }) => {
   return (
     <>
-      <NameInner
+      <BarcodeInner
         shapeProps={shape}
         isVisible={isVisible}
         isSelected={shape.id === selectedId}
@@ -86,8 +86,8 @@ const Name = ({shape, isVisible, selectedId, selectShape, setShape }) => {
 const mapStateToProps = (state) => {
   return{
     selectedId: state.selectedId,
-    isVisible: state.checklist.name,
-    shape: state.shapes.find((shape) => shape.type === 'name')
+    isVisible: state.checklist.barcode,
+    shape: state.shapes.find((shape) => shape.type === 'barcode')
   }
 }
 
@@ -98,5 +98,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Name);
+export default connect(mapStateToProps, mapDispatchToProps)(Barcode);
   

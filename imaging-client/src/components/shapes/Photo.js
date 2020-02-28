@@ -70,7 +70,6 @@ const PhotoInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) =>
 };
 
 const Photo = ({shape, isVisible, selectedId, selectShape, setShape }) => {
-  console.log('shape',shape)
   return (
     <>
       <PhotoInner
