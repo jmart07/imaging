@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  x: 1
+  'y': 1
+  width: 1
+  height: 1
+  text: MyString
+  fontsize: 1
+
+two:
+  type: 
+  x: 1
+  'y': 1
+  width: 1
+  height: 1
+  text: MyString
+  fontsize: 1

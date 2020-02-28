@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const fetchStudents = () => {
-  axios.get('http://localhost:3000/students')
+const fetchStudents = async () => {
+  await axios.get('http://localhost:3000/students')
   .then((response) => {
     console.log('response',response.data)
     return response.data})

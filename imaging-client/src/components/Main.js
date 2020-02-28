@@ -9,9 +9,12 @@ import './app.css';
 const Main = ({getStudents}) => {
 
   useEffect(() => {
-    console.log('fetch',fetchStudents());
-    // console.log("temp", temp)
-    // getStudents(temp);
+    async function awaitFunction() {
+      return await fetchStudents();
+    }
+    const temp = awaitFunction();
+    console.log("temp", temp)
+    getStudents(temp);
   }, []);
 
   return (
