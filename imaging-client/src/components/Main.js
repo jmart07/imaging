@@ -1,20 +1,29 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import fetchStudents from '../api/fetchStudents';
+import fetchTemplates from '../api/fetchTemplates';
 import Checklist from './Checklist';
 import Canvas from './Canvas';
 import Filter from './Filter';
 import './app.css';
 
-const Main = ({getStudents}) => {
+const Main = ({getStudents, getTemplates}) => {
 
+  // on load gets students, templates, and shapes
   useEffect(() => {
-    async function awaitFunction() {
-      return await fetchStudents();
+    const awaitStudents = async () => {
+      const dbStudents = await fetchStudents();
+      getStudents(dbStudents);
     }
-    const temp = awaitFunction();
-    console.log("temp", temp)
-    getStudents(temp);
+    // templates fetched with associated shapes
+    const awaitTemplates = async () => {
+      const dbTemplates = await fetchTemplates();
+      console.log('dbtemplates', dbTemplates)
+      getTemplates(dbTemplates);
+    }
+
+    awaitStudents();
+    awaitTemplates();
   }, []);
 
   return (
@@ -25,7 +34,7 @@ const Main = ({getStudents}) => {
         </div>
         <div className='right'>
           <Filter />
-          <Canvas />
+          {/* <Canvas /> */}
         </div>
       </div>
   );
@@ -33,7 +42,8 @@ const Main = ({getStudents}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getStudents: (students) => dispatch({type: 'GET_STUDENTS', newStudents: students})
+    getStudents: (students) => dispatch({type: 'UPDATE_STUDENTS', newStudents: students}),
+    getTemplates: (templates) => dispatch({type: 'UPDATE_TEMPLATES', newTemplates: templates}),
   }
 }
 

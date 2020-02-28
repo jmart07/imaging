@@ -1,12 +1,24 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Filter = () => {
+const Filter = ({templates}) => {
 
   return(
     <div className="filter">
-      filter
+      <select>
+        {templates.map((template) => {
+          return <option value={template.name}>{template.name}</option>
+        })}
+      </select>
     </div>
   )
 }
 
-export default Filter;
+const mapStateToProps = (state) => {
+  console.log('filter', state)
+  return{
+    templates: state.templates
+  }
+}
+
+export default connect(mapStateToProps)(Filter);

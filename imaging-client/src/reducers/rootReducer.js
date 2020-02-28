@@ -38,7 +38,7 @@ const rootReducer = (state = initState, action) => {
 
       }
     
-    case 'GET_STUDENTS':
+    case 'UPDATE_STUDENTS':
       console.log('newstudents', action.newStudents);
 
       return {
@@ -46,6 +46,13 @@ const rootReducer = (state = initState, action) => {
         students: action.newStudents
       }
 
+    case 'UPDATE_TEMPLATES':
+      console.log('newtemplates', action.newTemplates);
+      
+      return {
+        ...state,
+        templates: action.newTemplates
+      }
 
     default:
       return state;
