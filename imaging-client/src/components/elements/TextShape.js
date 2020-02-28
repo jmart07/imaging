@@ -34,8 +34,8 @@ const TextShape = ({ shapeProps, isSelected, onSelect, onChange }) => {
           const scaleY = node.scaleY();
 
           // reset scale to match data better (according to documentation)
-          // node.scaleX(1);
-          // node.scaleY(1);
+          node.scaleX(1);
+          node.scaleY(1);
 
           onChange({
             ...shapeProps,

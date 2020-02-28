@@ -33,7 +33,6 @@ const Checklist = ({ checklist, toggleCheck }) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log('mapstatetoprops', state.checklist)
   return{
     checklist: state.checklist
   }

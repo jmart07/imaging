@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectShape: (id) => dispatch({type: 'SELECT_SHAPE', shapeId: id}),
-    setTexts: (texts) => dispatch({type: 'SET_SHAPE', shapeType: 'photos', newShapes: texts})
+    setTexts: (texts) => dispatch({type: 'SET_SHAPE', shapeType: 'texts', newShapes: texts})
   }
 }
 

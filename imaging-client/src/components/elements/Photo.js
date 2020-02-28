@@ -3,14 +3,14 @@ import { Image, Transformer } from "react-konva";
 import useImage from 'use-image';
 
 const Photo = ({ shapeProps, isVisible, isSelected, onSelect, onChange }) => {
-  const shapeRef = React.useRef();
-  const trRef = React.useRef();
+  const photoRef = React.useRef();
+  const photoTrRef = React.useRef();
 
   React.useEffect(() => {
     if (isSelected) {
       // attaching transformer to node manually with refs
-      trRef.current.setNode(shapeRef.current);
-      trRef.current.getLayer().batchDraw();
+      photoTrRef.current.setNode(photoRef.current);
+      photoTrRef.current.getLayer().batchDraw();
     }
   }, [isSelected]);
 
@@ -21,7 +21,7 @@ const Photo = ({ shapeProps, isVisible, isSelected, onSelect, onChange }) => {
       <Image
         image={image}
         onClick={onSelect}
-        ref={shapeRef}
+        ref={photoRef}
         {...shapeProps}
         visible={isVisible}
         draggable
@@ -34,13 +34,13 @@ const Photo = ({ shapeProps, isVisible, isSelected, onSelect, onChange }) => {
         }}
         onTransformEnd={e => {
           // transform uses scale but then maps new width/height to store
-          const node = shapeRef.current;
+          const node = photoRef.current;
           const scaleX = node.scaleX();
           const scaleY = node.scaleY();
 
           // reset scale to match data better (according to documentation)
-          // node.scaleX(1);
-          // node.scaleY(1);
+          node.scaleX(1);
+          node.scaleY(1);
 
           onChange({
             ...shapeProps,
@@ -54,7 +54,7 @@ const Photo = ({ shapeProps, isVisible, isSelected, onSelect, onChange }) => {
       />
       {isSelected && (
         <Transformer
-          ref={trRef}
+          ref={photoTrRef}
           boundBoxFunc={(oldBox, newBox) => {
             // limit resize
             if (newBox.width < 5 || newBox.height < 5) {

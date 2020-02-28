@@ -53,8 +53,8 @@ const rootReducer = (state = initState, action) => {
     case 'SET_SHAPE':
       return {
         ...state,
-        elements: {
-          ...state.elements,
+        shapes: {
+          ...state.shapes,
           [action.shapeType]: action.newShapes
         }
       }
