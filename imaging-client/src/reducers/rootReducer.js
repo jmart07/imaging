@@ -20,12 +20,12 @@ const rootReducer = (state = initState, action) => {
       }
 
     case 'STORE_SHAPE':
-      console.log('store_shape')
+      // console.log('store_shape')
 
       const foundTemplate = state.templates.find((t) => {
-        return action.templateId === t.id
+        return state.templateId === t.id
       })
-      console.log(foundTemplate);
+      // console.log(foundTemplate);
 
       const newShapes = foundTemplate.shapes.map((shape) => {
         if(shape.id !== action.shapeId) {
@@ -35,16 +35,16 @@ const rootReducer = (state = initState, action) => {
       })
 
       const newTemplates = state.templates.map((t) => {
-        console.log(t.id)
-        console.log(action.templateId)
-        if(t.id !== action.templateId) {
+        // console.log(t.id)
+        // console.log(state.templateId)
+        if(t.id !== state.templateId) {
           return t;
         }
         t.shapes = newShapes;
         return t;
       })
 
-      console.log(newTemplates)
+      // console.log(newTemplates)
 
       return {
         ...state,
@@ -52,7 +52,7 @@ const rootReducer = (state = initState, action) => {
       }
     
     case 'TOGGLE_CHECK':
-      const checkedId = action.checkId.target.id;
+      const checkedId = action.checkId;
 
       return {
         ...state,

@@ -65,7 +65,7 @@ const NameInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) => 
   );
 };
 
-const Name = ({shape, isVisible, selectedId, templateId, selectShape, setShape }) => {
+const Name = ({shape, isVisible, selectedId, selectShape, setShape }) => {
   return (
     <>
       <NameInner
@@ -76,7 +76,7 @@ const Name = ({shape, isVisible, selectedId, templateId, selectShape, setShape }
           selectShape(shape.id);
         }}
         onChange={newAttrs => {
-          setShape(shape.id, templateId, newAttrs);
+          setShape(shape.id, newAttrs);
         }}
       />
     </>
@@ -84,12 +84,11 @@ const Name = ({shape, isVisible, selectedId, templateId, selectShape, setShape }
 }
   
 const mapStateToProps = (state) => {
-  const foundShapes = state.templates.find((t) => state.templateId).shapes
-  const foundShape = foundShapes.find((shape) => shape.shape_type === 'name')
+  const foundShapes = state.templates.find((t) => state.templateId).shapes;
+  const foundShape = foundShapes.find((shape) => shape.shape_type === 'name');
 
   return{
     selectedId: state.shapeId,
-    templateId: state.templateId,
     isVisible: state.checklist.name,
     shape: foundShape
   }
@@ -98,7 +97,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectShape: (id) => dispatch({type: 'GET_SHAPE', shapeId: id}),
-    setShape: (shapeId, templateId, attrs) => dispatch({type: 'STORE_SHAPE', shapeId: shapeId, templateId: templateId, attrs: attrs})
+    setShape: (shapeId, attrs) => dispatch({type: 'STORE_SHAPE', shapeId: shapeId, attrs: attrs})
   }
 }
 

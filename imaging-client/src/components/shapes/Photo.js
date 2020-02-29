@@ -69,7 +69,7 @@ const PhotoInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) =>
   );
 };
 
-const Photo = ({shape, isVisible, selectedId, templateId, selectShape, setShape }) => {
+const Photo = ({shape, isVisible, selectedId, selectShape, setShape }) => {
   return (
     <>
       <PhotoInner
@@ -80,7 +80,7 @@ const Photo = ({shape, isVisible, selectedId, templateId, selectShape, setShape 
           selectShape(shape.id);
         }}
         onChange={newAttrs => {
-          setShape(shape.id, templateId, newAttrs);
+          setShape(shape.id, newAttrs);
         }}
       />
     </>
@@ -93,7 +93,6 @@ const mapStateToProps = (state) => {
 
   return{
     selectedId: state.shapeId,
-    templateId: state.templateId,
     isVisible: state.checklist.photo,
     shape: foundShape
   }
@@ -102,7 +101,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     selectShape: (id) => dispatch({type: 'GET_SHAPE', shapeId: id}),
-    setShape: (shapeId, templateId, attrs) => dispatch({type: 'STORE_SHAPE', shapeId: shapeId, templateId: templateId, attrs: attrs})
+    setShape: (shapeId, attrs) => dispatch({type: 'STORE_SHAPE', shapeId: shapeId, attrs: attrs})
   }
 }
 
