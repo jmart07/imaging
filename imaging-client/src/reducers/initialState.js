@@ -1,8 +1,7 @@
-import uuid from 'react-uuid';
-
 const initState = {
   loading: true,
-  selectedId: '',
+  shapeId: 0,
+  templateId: 1,
   checklist: {
     idNumber: true,
     photo: true,

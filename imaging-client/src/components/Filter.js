@@ -1,24 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const Filter = ({templates}) => {
+const Filter = ({templates, templateId, selectTemplate}) => {
 
   return(
     <div className="filter">
-      <select>
-        {templates.map((template) => {
-          return <option value={template.name}>{template.name}</option>
-        })}
-      </select>
+      <label>Template:
+        <select value={templateId} onChange={selectTemplate}>
+          {templates.map((template, i) => {
+            console.log('template', template)
+            return <option key={i} value={template.id}>{template.name}</option>
+          })}
+        </select>
+      </label>
     </div>
   )
 }
 
 const mapStateToProps = (state) => {
-  console.log('filter', state)
   return{
-    templates: state.templates
+    templates: state.templates,
+    templateId: state.templateId
   }
 }
 
-export default connect(mapStateToProps)(Filter);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectTemplate: (id) => dispatch({type: 'STORE_TEMPLATE_ID', templateId: id})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter);
+  

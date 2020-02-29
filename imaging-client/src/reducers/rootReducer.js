@@ -20,16 +20,35 @@ const rootReducer = (state = initState, action) => {
       }
 
     case 'STORE_SHAPE':
-      const newShapes = state.shapes.map((shape) => {
+      console.log('store_shape')
+
+      const foundTemplate = state.templates.find((t) => {
+        return action.templateId === t.id
+      })
+      console.log(foundTemplate);
+
+      const newShapes = foundTemplate.shapes.map((shape) => {
         if(shape.id !== action.shapeId) {
           return shape;
         }
-        return action.shapeAttrs;
+        return action.attrs;
       })
+
+      const newTemplates = state.templates.map((t) => {
+        console.log(t.id)
+        console.log(action.templateId)
+        if(t.id !== action.templateId) {
+          return t;
+        }
+        t.shapes = newShapes;
+        return t;
+      })
+
+      console.log(newTemplates)
 
       return {
         ...state,
-        shapes: newShapes
+        templates: newTemplates
       }
     
     case 'TOGGLE_CHECK':
@@ -41,24 +60,26 @@ const rootReducer = (state = initState, action) => {
           ...state.checklist,
           [checkedId]: !state.checklist[checkedId]
         }
-
       }
     
     case 'STORE_STUDENTS':
-      console.log('newstudents', action.newStudents);
-
       return {
         ...state,
         students: action.newStudents
       }
 
     case 'STORE_TEMPLATES':
-      console.log('newtemplates', action.newTemplates);
-      
+     
       return {
         ...state,
         loading: false,
         templates: action.newTemplates
+      }
+
+    case 'STORE_TEMPLATE_ID':
+      return {
+        ...state,
+        templateId: action.templateId.target.value
       }
 
     default:

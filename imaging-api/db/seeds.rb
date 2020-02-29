@@ -35,6 +35,7 @@ p "Seeding students"
 p "Seeding templates"
 
 template1 = Template.create({name: "Good guys"})
+template1 = Template.create({name: "Bad guys"})
 
 p "Seeding shapes"
 
@@ -60,7 +61,7 @@ shapes = [
       shape_type: 'name',
       x: 390,
       y: 90,
-      text: 'John Martin',
+      text: 'Good John',
       font_size: 30
     },
     {
@@ -86,11 +87,59 @@ shapes = [
       y: 240,
       text: 'Class of 2020',
       font_size: 30
+    },
+    {
+      template_id: 2,
+      shape_type: 'idNumber',
+      x: 390,
+      y: 120,
+      text: '89101112',
+      font_size: 30
+    },
+    {
+      template_id: 2,
+      shape_type: 'photo',
+      x: 80,
+      y: 60,
+      width: 230,
+      height: 230
+    },
+    {
+      template_id: 2,
+      shape_type: 'name',
+      x: 390,
+      y: 90,
+      text: 'Bad John',
+      font_size: 30
+    },
+    {
+      template_id: 2,
+      shape_type: 'exportId',
+      x: 390,
+      y: 150,
+      text: 'EXPORTID',
+      font_size: 30
+    },
+    {
+      template_id: 2,
+      shape_type: 'barcode',
+      x: 130,
+      y: 300,
+      text: 'BARCODE',
+      font_size: 100
+    },
+    {
+      template_id: 2,
+      shape_type: 'grade',
+      x: 390,
+      y: 240,
+      text: 'Class of 2020',
+      font_size: 30
     }
 ]
 
 shapes.each do |shape|
-    template1.shapes.create(shape)
+  Shape.create(shape)
 end
 
 p "Done seeding"

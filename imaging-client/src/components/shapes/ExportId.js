@@ -65,7 +65,7 @@ const ExportIdInner = ({shapeProps, isSelected, isVisible, onSelect, onChange })
   );
 };
 
-const ExportId = ({shape, isVisible, selectedId, selectShape, setShape }) => {
+const ExportId = ({shape, isVisible, selectedId, templateId, selectShape, setShape }) => {
   return (
     <>
       <ExportIdInner
@@ -76,7 +76,7 @@ const ExportId = ({shape, isVisible, selectedId, selectShape, setShape }) => {
           selectShape(shape.id);
         }}
         onChange={newAttrs => {
-          setShape(shape.id, newAttrs);
+          setShape(shape.id, templateId, newAttrs);
         }}
       />
     </>
@@ -84,17 +84,21 @@ const ExportId = ({shape, isVisible, selectedId, selectShape, setShape }) => {
 }
   
 const mapStateToProps = (state) => {
+  const foundShapes = state.templates.find((t) => state.templateId).shapes;
+  const foundShape = foundShapes.find((shape) => shape.shape_type === 'exportId');
+
   return{
-    selectedId: state.selectedId,
+    selectedId: state.shapeId,
+    templateId: state.templateId,
     isVisible: state.checklist.exportId,
-    shape: state.shapes.find((shape) => shape.type === 'exportId')
+    shape: foundShape
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     selectShape: (id) => dispatch({type: 'GET_SHAPE', shapeId: id}),
-    setShape: (id, attrs) => dispatch({type: 'SET_SHAPE', shapeId: id, shapeAttrs: attrs})
+    setShape: (shapeId, templateId, attrs) => dispatch({type: 'STORE_SHAPE', shapeId: shapeId, templateId: templateId, attrs: attrs})
   }
 }
 
