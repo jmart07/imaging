@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_28_193626) do
+ActiveRecord::Schema.define(version: 2020_02_29_020959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2020_02_28_193626) do
     t.integer "width"
     t.integer "height"
     t.string "text"
-    t.integer "font_size"
+    t.integer "fontSize"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
