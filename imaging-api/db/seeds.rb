@@ -46,7 +46,8 @@ shapes = [
       x: 390,
       y: 120,
       text: '1234567',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     },
     {
       template_id: 1,
@@ -54,7 +55,8 @@ shapes = [
       x: 80,
       y: 60,
       width: 230,
-      height: 230
+      height: 230,
+      visible: true
     },
     {
       template_id: 1,
@@ -62,7 +64,8 @@ shapes = [
       x: 390,
       y: 90,
       text: 'Good John',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     },
     {
       template_id: 1,
@@ -70,7 +73,8 @@ shapes = [
       x: 390,
       y: 150,
       text: 'EXPORTID',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     },
     {
       template_id: 1,
@@ -78,7 +82,8 @@ shapes = [
       x: 130,
       y: 300,
       text: 'BARCODE',
-      font_size: 100
+      fontSize: 100,
+      visible: true
     },
     {
       template_id: 1,
@@ -86,7 +91,8 @@ shapes = [
       x: 390,
       y: 240,
       text: 'Class of 2020',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     },
     {
       template_id: 2,
@@ -94,7 +100,8 @@ shapes = [
       x: 390,
       y: 120,
       text: '89101112',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     },
     {
       template_id: 2,
@@ -102,7 +109,8 @@ shapes = [
       x: 80,
       y: 60,
       width: 230,
-      height: 230
+      height: 230,
+      visible: true
     },
     {
       template_id: 2,
@@ -110,7 +118,8 @@ shapes = [
       x: 390,
       y: 90,
       text: 'Bad John',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     },
     {
       template_id: 2,
@@ -118,7 +127,8 @@ shapes = [
       x: 390,
       y: 150,
       text: 'EXPORTID',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     },
     {
       template_id: 2,
@@ -126,7 +136,8 @@ shapes = [
       x: 130,
       y: 300,
       text: 'BARCODE',
-      font_size: 100
+      fontSize: 100,
+      visible: true
     },
     {
       template_id: 2,
@@ -134,7 +145,8 @@ shapes = [
       x: 390,
       y: 240,
       text: 'Class of 2020',
-      font_size: 30
+      fontSize: 30,
+      visible: true
     }
 ]
 
