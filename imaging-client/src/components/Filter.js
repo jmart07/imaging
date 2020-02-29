@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 
 const Filter = ({templates, templateId, selectTemplate}) => {
 
+  const handleChange = (e) => {
+    console.log(e.target.value)
+    selectTemplate(e.target.value)
+  }
+
   return(
     <div className="filter">
       <label>Template:
-        <select value={templateId} onChange={selectTemplate}>
+        <select value={templateId} onChange={handleChange}>
           {templates.map((template, i) => {
-            console.log('template', template)
             return <option key={i} value={template.id}>{template.name}</option>
           })}
         </select>

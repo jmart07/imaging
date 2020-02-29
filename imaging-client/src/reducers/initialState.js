@@ -1,5 +1,4 @@
 const initState = {
-  loading: true,
   shapeId: 0,
   templateId: 1,
   checklist: {

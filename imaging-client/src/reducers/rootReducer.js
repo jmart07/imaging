@@ -3,15 +3,10 @@ import initState from './initialState';
 const rootReducer = (state = initState, action) => {
   console.log('root reducer');
   console.log('state', state);
+  console.log('state templates', state.templates)
   console.log('action', action);
 
   switch (action.type) {
-
-    case 'TOGGLE_LOADING':
-      return {
-        ...state,
-        loading: !state.loading
-      }
 
     case 'GET_SHAPE':
       return {
@@ -20,12 +15,15 @@ const rootReducer = (state = initState, action) => {
       }
 
     case 'STORE_SHAPE':
-      // console.log('store_shape')
+      console.log('store_shape')
 
       const foundTemplate = state.templates.find((t) => {
-        return state.templateId === t.id
+        console.log(state.templateId)
+        console.log(t.id)
+
+        return state.templateId == t.id
       })
-      // console.log(foundTemplate);
+      console.log('foundtemplate', foundTemplate);
 
       const newShapes = foundTemplate.shapes.map((shape) => {
         if(shape.id !== action.shapeId) {
@@ -33,6 +31,8 @@ const rootReducer = (state = initState, action) => {
         }
         return action.attrs;
       })
+
+      console.log('newshapes', newShapes)
 
       const newTemplates = state.templates.map((t) => {
         // console.log(t.id)
@@ -44,7 +44,7 @@ const rootReducer = (state = initState, action) => {
         return t;
       })
 
-      // console.log(newTemplates)
+      console.log('newtemplates', newTemplates)
 
       return {
         ...state,
@@ -72,14 +72,13 @@ const rootReducer = (state = initState, action) => {
      
       return {
         ...state,
-        loading: false,
         templates: action.newTemplates
       }
 
     case 'STORE_TEMPLATE_ID':
       return {
         ...state,
-        templateId: action.templateId.target.value
+        templateId: action.templateId
       }
 
     default:

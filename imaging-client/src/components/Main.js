@@ -12,7 +12,7 @@ const Main = () => {
         <Checklist />
       </div>
       <div className='right'>
-        {/* <Filter /> */}
+        <Filter />
         <Canvas />
       </div>
     </div>
