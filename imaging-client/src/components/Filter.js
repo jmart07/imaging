@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom'
 
 const Filter = ({templates, templateId, selectTemplate}) => {
 
   const handleChange = (e) => {
-    console.log(e.target.value)
-    selectTemplate(e.target.value)
+    selectTemplate(e.target.value);
   }
 
   return(

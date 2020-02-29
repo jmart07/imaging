@@ -34,8 +34,8 @@ p "Seeding students"
 
 p "Seeding templates"
 
-template1 = Template.create({name: "Good guys"})
-template1 = Template.create({name: "Bad guys"})
+template1 = Template.create({name: "First Template"})
+template1 = Template.create({name: "Second Template"})
 
 p "Seeding shapes"
 
@@ -63,7 +63,7 @@ shapes = [
       shape_type: 'name',
       x: 390,
       y: 90,
-      text: 'Good John',
+      text: 'Name 1',
       fontSize: 30,
       visible: true
     },
@@ -117,7 +117,7 @@ shapes = [
       shape_type: 'name',
       x: 390,
       y: 90,
-      text: 'Bad John',
+      text: 'Name 2',
       fontSize: 30,
       visible: true
     },

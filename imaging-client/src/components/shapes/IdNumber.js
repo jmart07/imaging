@@ -86,7 +86,6 @@ const IdNumber = ({shape, selectedId, isVisible, selectShape, setShape }) => {
 const mapStateToProps = (state) => {
   const foundShapes = state.templates.find((t) => state.templateId).shapes;
   const foundShape = foundShapes.find((shape) => shape.shape_type === 'idNumber');
-  console.log(foundShape);
 
   return{
     selectedId: state.shapeId,

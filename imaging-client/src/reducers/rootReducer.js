@@ -29,6 +29,8 @@ const rootReducer = (state = initState, action) => {
         if(shape.id !== action.shapeId) {
           return shape;
         }
+        console.log(shape.id)
+        console.log(action.shapeId)
         return action.attrs;
       })
 
