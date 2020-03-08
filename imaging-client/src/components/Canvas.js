@@ -38,7 +38,7 @@ const Canvas = () => {
               <Photo />
               <Name />
               <ExportId />
-              <Barcode />
+              <Barcode className='barcode' />
               <Grade />
             </Layer>
           </Provider>

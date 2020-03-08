@@ -3,38 +3,38 @@ import initState from './initialState';
 const rootReducer = (state = initState, action) => {
   console.log('root reducer');
   console.log('state', state);
-  console.log('state templates', state.templates)
   console.log('action', action);
 
   switch (action.type) {
 
     case 'GET_SHAPE':
+    console.log(action.shapeId)
       return {
         ...state,
-        selectedId: action.shapeId
+        shapeId: action.shapeId
       }
 
     case 'STORE_SHAPE':
-      console.log('store_shape')
+      // console.log('store_shape')
 
       const foundTemplate = state.templates.find((t) => {
-        console.log(state.templateId)
-        console.log(t.id)
+        // console.log(state.templateId)
+        // console.log(t.id)
 
         return state.templateId == t.id
       })
-      console.log('foundtemplate', foundTemplate);
+      // console.log('foundtemplate', foundTemplate);
 
       const newShapes = foundTemplate.shapes.map((shape) => {
         if(shape.id !== action.shapeId) {
           return shape;
         }
-        console.log(shape.id)
-        console.log(action.shapeId)
+        // console.log(shape.id)
+        // console.log(action.shapeId)
         return action.attrs;
       })
 
-      console.log('newshapes', newShapes)
+      // console.log('newshapes', newShapes)
 
       const newTemplates = state.templates.map((t) => {
         // console.log(t.id)
@@ -46,7 +46,7 @@ const rootReducer = (state = initState, action) => {
         return t;
       })
 
-      console.log('newtemplates', newTemplates)
+      // console.log('newtemplates', newTemplates)
 
       return {
         ...state,

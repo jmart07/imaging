@@ -19,30 +19,24 @@ const Checklist = ({ checklist, shapes, toggleCheck, setShape }) => {
 
   return(
     <form className='menu'>
-      <div className='menuRow'>
-        <label htmlFor="idNumber">ID Number</label>
-        <input type="checkbox" id="idNumber" name="idNumber" checked={checklist.idNumber} onChange={handleChange}></input>
-      </div>
-      <div className='menuRow'>
-        <label htmlFor="photo">Photo</label>
-        <input type="checkbox" id="photo" name="photo" checked={checklist.photo} onChange={handleChange}></input>
-      </div>
-      <div className='menuRow'>
-        <label htmlFor="name">Name</label>
-        <input type="checkbox" id="name" name="name" checked={checklist.name} onChange={handleChange}></input>
-      </div>
-      <div className='menuRow'>
-        <label htmlFor="exportId">Export ID</label>
-        <input type="checkbox" id="exportId" name="exportId" checked={checklist.exportId} onChange={handleChange}></input>
-      </div>
-      <div className='menuRow'>
-        <label htmlFor="barcode">Barcode</label>
-        <input type="checkbox" id="barcode" name="barcode" checked={checklist.barcode} onChange={handleChange}></input>
-      </div>
-      <div className='menuRow'>
-        <label htmlFor="grade">Grade</label>
-        <input type="checkbox" id="grade" name="grade" checked={checklist.grade} onChange={handleChange}></input>
-      </div>
+        <label className='menuRow'>
+          ID Number<input type="checkbox" id="idNumber" name="idNumber" checked={checklist.idNumber} onChange={handleChange} />
+        </label>
+        <label className='menuRow'>
+          Photo<input type="checkbox" id="photo" name="photo" checked={checklist.photo} onChange={handleChange} />
+        </label>
+        <label className='menuRow'>
+          Name<input type="checkbox" id="name" name="name" checked={checklist.name} onChange={handleChange} />
+        </label>
+        <label className='menuRow'> 
+          Export ID<input type="checkbox" id="exportId" name="exportId" checked={checklist.exportId} onChange={handleChange} />
+        </label>
+        <label className='menuRow'>
+          Barcode<input type="checkbox" id="barcode" name="barcode" checked={checklist.barcode} onChange={handleChange} />
+        </label>
+        <label className='menuRow'>
+          Grade<input type="checkbox" id="grade" name="grade" checked={checklist.grade} onChange={handleChange} />
+        </label>
     </form>
   )
 }

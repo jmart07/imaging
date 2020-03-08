@@ -7,7 +7,8 @@ const PhotoInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) =>
   const shapeRef = React.useRef();
   const trRef = React.useRef();
 
-  const [image] = useImage('https://konvajs.org/assets/lion.png');
+  const [image1] = useImage('https://konvajs.org/assets/lion.png');
+  // const [image2] = useImage('https://i.imgur.com/IZ3Vf9N.jpg');
 
   React.useEffect(() => {
     if (isSelected) {
@@ -20,7 +21,7 @@ const PhotoInner = ({shapeProps, isSelected, isVisible, onSelect, onChange }) =>
   return (
     <>
       <Image
-        image={image}
+        image={image1}
         onClick={onSelect}
         ref={shapeRef}
         {...shapeProps}

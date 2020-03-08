@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <div className='container'>
       <div className='left'>
-        <div className='logo'>LOGO</div>
+        <div className='logo'></div>
         <Checklist />
       </div>
       <div className='right'>
