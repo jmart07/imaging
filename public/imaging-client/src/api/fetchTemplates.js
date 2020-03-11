@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+baseUrl = process.env.baseURL || "http://localhost:3000"
+
 const fetchTemplates = async () => {
-  return await axios.get('', data)
+  return await axios.get(baseURL, data)
   .then((response) => {
     console.log('response',response.data)
     return response.data})
