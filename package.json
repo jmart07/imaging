@@ -1,0 +1,31 @@
+{
+  "name": "imaging",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the\r application up and running.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "build": "cd client && yarn install && yarn build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "yarn build && yarn deploy && echo 'Client built!'"
+  },
+    "engines": {
+    "yarn": "1.21.1",
+    "npm": "6.11.3",
+    "node": "12.11.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmart07/imaging.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmart07/imaging/issues"
+  },
+  "homepage": "https://github.com/jmart07/imaging#readme"
+}
