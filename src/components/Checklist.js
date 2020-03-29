@@ -11,7 +11,7 @@ const Checklist = ({ checklist, shapes, toggleCheck, setShape }) => {
       return s
     })
 
-    console.log(newShapes)
+    console.log("newShapes", newShapes)
     setShape(newShapes);
     toggleCheck(e.target.id);
   }

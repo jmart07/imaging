@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom'
 
-const Filter = ({templates, templateId, selectTemplate}) => {
+const Filter = ({templates, templateId, storeTemplateId}) => {
 
   const handleChange = (e) => {
-    selectTemplate(e.target.value);
+    storeTemplateId(e.target.value);
   }
 
   return(
@@ -30,7 +30,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectTemplate: (id) => dispatch({type: 'STORE_TEMPLATE_ID', templateId: id})
+    storeTemplateId: (id) => dispatch({type: 'STORE_TEMPLATE_ID', templateId: id})
   }
 }
 

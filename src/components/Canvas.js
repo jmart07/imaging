@@ -36,7 +36,7 @@ const Canvas = () => {
               <Card />
               <IdNumber />
               <Photo />
-              <Name />\
+              <Name />
               <ExportId />
               <Barcode className='barcode' />
               <Grade />
